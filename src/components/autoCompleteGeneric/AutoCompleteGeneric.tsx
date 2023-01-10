@@ -1,5 +1,5 @@
 
-import '../textFieldGeneric/TextFieldGeneric.css'
+import './AutoCompleteGeneric.css'
 
 import { GoSearch } from 'react-icons/go'
 import { IconContext } from 'react-icons/lib'
@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 
 
-export const TextFieldGeneric = (props: any) => {
+export const AutoCompleteGeneric = (props: any) => {
 
     const data = props.data
 

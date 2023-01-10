@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material"
-import { TextFieldGeneric } from "../../components/textFieldGeneric/TextFieldGeneric"
+import { AutoCompleteGeneric } from "../../components/autoCompleteGeneric/AutoCompleteGeneric"
 
 
 
@@ -38,13 +38,13 @@ export const Home = () => {
 
             <h1>Criando autocomplete</h1>
             <Typography>
-                <TextFieldGeneric name='Nome' data={produtos} />
+                <AutoCompleteGeneric name='Nome' data={produtos} />
                 <br />
-                <TextFieldGeneric name='Grupo' data={produtos} />
+                <AutoCompleteGeneric name='Grupo' data={produtos} />
                 <br />
-                <TextFieldGeneric name='Classe' data={produtos} />
+                <AutoCompleteGeneric name='Classe' data={produtos} />
                 <br />
-                <TextFieldGeneric name='Setor' data={produtos} />
+                <AutoCompleteGeneric name='Setor' data={produtos} />
             </Typography>
         
         </div>
