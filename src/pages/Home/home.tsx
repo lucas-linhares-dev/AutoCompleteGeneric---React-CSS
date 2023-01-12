@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material"
 import { AutoCompleteGeneric } from "../../components/autoCompleteGeneric/AutoCompleteGeneric"
-
+import Grid from '@mui/material/Grid';
 
 
 
@@ -29,24 +29,64 @@ export const Home = () => {
         },
         {
             id: 5,
-            name: "copo de agua"
+            name: "copo de agua fria"
+        },
+        {
+            id: 5,
+            name: "copo de quente"
+        },
+        {
+            id: 5,
+            name: "copo de agua vindo direto do açude"
         }
     ]
 
     return( 
-        <div>
 
-            <h1>Criando autocomplete</h1>
+        <div>
             <Typography>
-                <AutoCompleteGeneric name='Nome' data={produtos} />
-                <br />
-                <AutoCompleteGeneric name='Grupo' data={produtos} />
-                <br />
-                <AutoCompleteGeneric name='Classe' data={produtos} />
-                <br />
-                <AutoCompleteGeneric name='Setor' data={produtos} />
+
+                <h1>Criando autocomplete</h1>
+
+                <Grid container spacing={1.5} >
+
+                    <Grid item xs={8}>
+                    <AutoCompleteGeneric name='Nome' data={produtos}  />
+                    </Grid>
+                 
+                    <Grid item xs={4}>
+                    <AutoCompleteGeneric name='Nome' data={produtos}  />
+                    </Grid>
+
+                    <Grid item xs={6}>
+                    <AutoCompleteGeneric name='Nome' data={produtos}  />
+                    </Grid>
+                 
+                    <Grid item xs={6}>
+                    <AutoCompleteGeneric name='Nome' data={produtos}  />
+                    </Grid>
+
+                    <Grid item xs={4}>
+                    <AutoCompleteGeneric name='Nome' data={produtos}  />
+                    </Grid>
+                 
+                    <Grid item xs={8}>
+                    <AutoCompleteGeneric name='Nome' data={produtos}  />
+                    </Grid>
+
+                    <Grid item xs={10}>
+                    <AutoCompleteGeneric name='Nome' data={produtos}  />
+                    </Grid>
+                 
+                    <Grid item xs={2}>
+                    <AutoCompleteGeneric name='Nome' data={produtos}  />
+                    </Grid>
+
+
+                </Grid>
+
             </Typography>
-        
         </div>
+
     )
 }

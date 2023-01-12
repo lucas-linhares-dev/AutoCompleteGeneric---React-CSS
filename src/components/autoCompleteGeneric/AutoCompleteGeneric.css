@@ -1,18 +1,25 @@
 
 
+.autocomplete {
+    position: relative;
+}
+
 .autocomplete-input {
     display: flex;
     align-items: center;
 
     height: 45px;
-    width: 250px;
 
     border-radius: 5px;
     gap: 15px;
 
     padding: 3px 17px;
 
-    background-color: white;
+    background-color: rgb(255, 255, 255);
+
+    border: solid 2px #008122;
+
+    position: relative;
 
 }
 
@@ -25,23 +32,45 @@
     width: 100%;
     height: 45px;
 
-    font-size: 17px;
+    font-size: 19px;
+
+
+}
+
+.autocomplete-input label {
+
+    font-size: 0.85em;
+
+    position: absolute;
+    left: 1.6em;
+    top: -0.8em;
+
+    background-color: white;
+    
+    padding: 0 0.3em;
+
+    color: #286e00;
 }
 
 .autocomplete-icon{
-    font-size: 20px;
+    position: absolute;
+    right: 1.5em;
 }
 
 
 .autocomplete-result{
     background-color: rgb(243, 243, 243);
-    width: 284px;
     max-height: 200px;
 
     border-radius: 5px;
 
     overflow: hidden;
     overflow-y: auto;
+
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .autocomplete-result::-webkit-scrollbar {
@@ -51,11 +80,27 @@
 .autocomplete-result-item {
     display: flex;
     align-items: center;
+
     gap: 12px;
-    padding: 4px 17px;
-    cursor: pointer
+    padding: 5px 17px;
+
+    cursor: pointer;
+
+    border-bottom: solid 1px rgb(95, 95, 95);
+
+    position: relative;
+
+
+}
+
+.autocomplete-result-item:focus{
+    border: solid 0px #E9F5DB;
+    background-color: #E9F5DB;
+    outline: none;
+    font-size: 16.7px;
 }
 
 .autocomplete-result-item:hover {
-    background-color: rgb(224, 231, 238);
+    background-color: #E9F5DB;
+    font-size: 16.7px;
 }

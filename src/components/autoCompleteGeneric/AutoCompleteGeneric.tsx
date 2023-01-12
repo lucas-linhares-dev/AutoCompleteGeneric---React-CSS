@@ -12,9 +12,10 @@ export const AutoCompleteGeneric = (props: any) => {
 
     const data = props.data
 
-    const [inputSearch, setInputSearch] = useState('')
-    const [filterItens, setFilterItens] = useState([])
+    let itemSelected = -1
 
+    const [inputSearch, setInputSearch] = useState('')
+    const [filterItens, setFilterItens] = useState<any>([])
 
     const handleFilter = (e: any) => {
 
@@ -39,20 +40,48 @@ export const AutoCompleteGeneric = (props: any) => {
     const clearInput = () => {
         setFilterItens([])
         setInputSearch("")
+      
+    }
+
+    const keyBoardEvents = (e: any) => {
+        if(e.key === "Enter"){
+            
+            handleClickItem(filterItens[itemSelected])
+        }
+        if(e.key === "ArrowDown"){
+
+            if(filterItens[itemSelected+1].name){
+                itemSelected++
+            }
+
+            document.getElementById(filterItens[itemSelected]?.name)?.focus()
+        }
+        if(e.key === "ArrowUp"){
+
+            if(filterItens[itemSelected-1].name){ 
+                itemSelected--
+            }
+
+            document.getElementById(filterItens[itemSelected]?.name)?.focus()
+        }
     }
 
     return(
-        <div>
+        <div className='autocomplete'>
             
             <div className='autocomplete-input'>
                 
-                <IconContext.Provider value={{color: "#696969", size: "20px"}}>
-                    <GoSearch />    
-                    <input type="text" placeholder={props.name} value = {inputSearch} onChange={handleFilter}  />
+                <IconContext.Provider value={{color: "#2B7C41", size: "20px"}}>
+         
+                    <input id='input' type="text" value = {inputSearch} onChange={handleFilter} onKeyDown={keyBoardEvents} />
+                    <label htmlFor="input">{props.name}</label>
 
                     {inputSearch !== "" ?
                      <AiOutlineClose onClick={clearInput}/>
                       : "" }
+
+                    {inputSearch === "" && <GoSearch />}  
+
                 </IconContext.Provider>
 
             </div>
@@ -60,12 +89,17 @@ export const AutoCompleteGeneric = (props: any) => {
             {filterItens !== null &&
                 <div className='autocomplete-result'>
 
-                    {filterItens.map((item: any) => (
-                        <div className='autocomplete-result-item' key={item.id} onClick={() => handleClickItem(item)}>
-                            <IconContext.Provider value={{color: "#696969", size: "15px"}}>
-                                <GoSearch />
+                    {filterItens.map((item: any, index: any) => (
+                        <div className='autocomplete-result-item' id={filterItens[index].name} key={item.id} onClick={() => handleClickItem(item)} contentEditable onKeyDown={keyBoardEvents}>
+
+                            <IconContext.Provider value={{color: "#2B7C41", size: "17px"}}>
+
                                 <p>{item.name}</p>
+
+                                <GoSearch className='autocomplete-icon'/>
+
                             </IconContext.Provider>
+
                         </div>
                     ))}
 
